@@ -1,0 +1,429 @@
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:02:44.69 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Execute Install-Apps........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:02:44.83 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Install Basic Apps........ 
+----------------------------------------------------------------------------------------------------- 
+Google Chrome already installed
+Adobe Acrobat Reader installation failed.
+VLC Media Player already installed.
+7-Zip already installed.
+----------------------------------------------------------------------------------------------------- 
+End Install, Wed 03/12/2025, 16:09:35.52 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:16:23.68 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Execute Install-Apps........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:16:23.80 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Install Basic Apps........ 
+----------------------------------------------------------------------------------------------------- 
+Google Chrome already installed
+Install Chrome........ 
+Install Adobe........ 
+Install Adobe........ 
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:19:21.33 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Execute Install-Apps........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:19:21.41 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Install Basic Apps........ 
+----------------------------------------------------------------------------------------------------- 
+Google Chrome already installed
+Adobe Acrobat Reader already installed.
+VLC Media Player already installed.
+7-Zip already installed.
+----------------------------------------------------------------------------------------------------- 
+End Install Basic Apps, Wed 03/12/2025, 16:19:22.46 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Execute Install-AllCustom........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin All Custom, Wed 03/12/2025, 16:19:22.52 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Install uBlock........ 
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+ExtensionInstallForcelist                                                                                              
+
+1            : cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallF
+               orcelist\
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
+PSChildName  : ExtensionInstallForcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+ExtensionInstallForcelist                                                                                              
+
+1            : odfafepnkmbhccpbejgmiehpchacaeak;https://edge.microsoft.com/extensionwebstorebase/v1/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\ExtensionInstall
+               Forcelist\
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge
+PSChildName  : ExtensionInstallForcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+ExtensionInstallForcelist                                                                                              
+
+1            : ddkjiahejlhfcafbddmgiahcphecmpfh;https://clients2.google.com/service/update2/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallF
+               orcelist\
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
+PSChildName  : ExtensionInstallForcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+md : An item with the specified name C:\Program Files\Mozilla Firefox\distribution\ already exists.
+At C:\PCR\Install-uBlock.ps1:22 char:2
++     md "c:\Program Files\Mozilla Firefox\distribution\"
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceExists: (C:\Program File...x\distribution\:String) [New-Item], IOException
+    + FullyQualifiedErrorId : DirectoryExist,Microsoft.PowerShell.Commands.NewItemCommand
+ 
+md : Cannot create "C:\Program Files (x86)\Mozilla Firefox" because a file or directory with the same name already 
+exists.
+At C:\PCR\Install-uBlock.ps1:23 char:2
++     md "c:\Program Files (x86)\Mozilla Firefox\distribution\"
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (C:\Program File...x\distribution\:String) [New-Item], IOException
+    + FullyQualifiedErrorId : CreateDirectoryIOError,Microsoft.PowerShell.Commands.NewItemCommand
+ 
+copy : Could not find a part of the path 'C:\Program Files (x86)\Mozilla Firefox\distribution\'.
+At C:\PCR\Install-uBlock.ps1:25 char:2
++     copy "c:\PCR\policies.json" "c:\Program Files (x86)\Mozilla Firef ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Copy-Item], DirectoryNotFoundException
+    + FullyQualifiedErrorId : System.IO.DirectoryNotFoundException,Microsoft.PowerShell.Commands.CopyItemCommand
+ 
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Opera\Software
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+extension_install_forcelist                                                                                            
+
+1            : cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Opera\Software\extension_instal
+               l_forcelist
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Opera\Software
+PSChildName  : extension_install_forcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\BraveSoftware\Brave
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+ExtensionInstallForcelist                                                                                              
+
+1            : cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\BraveSoftware\Brave\ExtensionIn
+               stallForcelist
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\BraveSoftware\Brave
+PSChildName  : ExtensionInstallForcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+Install Win10 Custom, Per User Policies........ 
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+Install Win10 Custom, Per Device Policies........ 
+The operation completed successfully.
+The operation completed successfully.
+[SC] ControlService FAILED 1062:
+
+The service has not been started.
+
+[SC] ChangeServiceConfig SUCCESS
+The operation completed successfully.
+VSS Create........ 
+[SC] ChangeServiceConfig SUCCESS
+
+SERVICE_NAME: vss 
+        TYPE               : 10  WIN32_OWN_PROCESS  
+        STATE              : 2  START_PENDING 
+                                (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+        PID                : 5196
+        FLAGS              : 
+
+TaskPath                                       TaskName                          State     
+--------                                       --------                          -----     
+\                                              VSS-Task-Daily                    Ready     
+\                                              VSS-Task-Daily-C                  Ready     
+
+
+Enable Registry Backup........ 
+The operation completed successfully.
+----------------------------------------------------------------------------------------------------- 
+All-Custom Complete, Wed 03/12/2025, 16:19:25.88 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Complete! Wed 03/12/2025, 16:19:25.91 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:19:38.32 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Execute Install-Apps........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:19:38.44 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Install Basic Apps........ 
+----------------------------------------------------------------------------------------------------- 
+Google Chrome already installed
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:20:23.35 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Execute Install-Apps........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin Install, Wed 03/12/2025, 16:20:23.48 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+Install Basic Apps........ 
+----------------------------------------------------------------------------------------------------- 
+Google Chrome already installed
+Adobe Acrobat Reader already installed.
+VLC Media Player already installed.
+7-Zip already installed.
+----------------------------------------------------------------------------------------------------- 
+End Install Basic Apps, Wed 03/12/2025, 16:20:24.62 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Execute Install-AllCustom........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Begin All Custom, Wed 03/12/2025, 16:20:24.70 
+----------------------------------------------------------------------------------------------------- 
+Copy Installer........ 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Install uBlock........ 
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+ExtensionInstallForcelist                                                                                              
+
+1            : cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallF
+               orcelist\
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
+PSChildName  : ExtensionInstallForcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+ExtensionInstallForcelist                                                                                              
+
+1            : odfafepnkmbhccpbejgmiehpchacaeak;https://edge.microsoft.com/extensionwebstorebase/v1/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\ExtensionInstall
+               Forcelist\
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge
+PSChildName  : ExtensionInstallForcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+ExtensionInstallForcelist                                                                                              
+
+1            : ddkjiahejlhfcafbddmgiahcphecmpfh;https://clients2.google.com/service/update2/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallF
+               orcelist\
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
+PSChildName  : ExtensionInstallForcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+md : An item with the specified name C:\Program Files\Mozilla Firefox\distribution\ already exists.
+At C:\PCR\Install-uBlock.ps1:22 char:2
++     md "c:\Program Files\Mozilla Firefox\distribution\"
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceExists: (C:\Program File...x\distribution\:String) [New-Item], IOException
+    + FullyQualifiedErrorId : DirectoryExist,Microsoft.PowerShell.Commands.NewItemCommand
+ 
+md : Cannot create "C:\Program Files (x86)\Mozilla Firefox" because a file or directory with the same name already 
+exists.
+At C:\PCR\Install-uBlock.ps1:23 char:2
++     md "c:\Program Files (x86)\Mozilla Firefox\distribution\"
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (C:\Program File...x\distribution\:String) [New-Item], IOException
+    + FullyQualifiedErrorId : CreateDirectoryIOError,Microsoft.PowerShell.Commands.NewItemCommand
+ 
+copy : Could not find a part of the path 'C:\Program Files (x86)\Mozilla Firefox\distribution\'.
+At C:\PCR\Install-uBlock.ps1:25 char:2
++     copy "c:\PCR\policies.json" "c:\Program Files (x86)\Mozilla Firef ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Copy-Item], DirectoryNotFoundException
+    + FullyQualifiedErrorId : System.IO.DirectoryNotFoundException,Microsoft.PowerShell.Commands.CopyItemCommand
+ 
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Opera\Software
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+extension_install_forcelist                                                                                            
+
+1            : cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Opera\Software\extension_instal
+               l_forcelist
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Opera\Software
+PSChildName  : extension_install_forcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\BraveSoftware\Brave
+
+
+Name                           Property                                                                                
+----                           --------                                                                                
+ExtensionInstallForcelist                                                                                              
+
+1            : cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\BraveSoftware\Brave\ExtensionIn
+               stallForcelist
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\BraveSoftware\Brave
+PSChildName  : ExtensionInstallForcelist
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+Install Win10 Custom, Per User Policies........ 
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+The operation completed successfully.
+Install Win10 Custom, Per Device Policies........ 
+The operation completed successfully.
+The operation completed successfully.
+[SC] ControlService FAILED 1062:
+
+The service has not been started.
+
+[SC] ChangeServiceConfig SUCCESS
+The operation completed successfully.
+VSS Create........ 
+[SC] ChangeServiceConfig SUCCESS
+[SC] StartService FAILED 1056:
+
+An instance of the service is already running.
+
+
+TaskPath                                       TaskName                          State     
+--------                                       --------                          -----     
+\                                              VSS-Task-Daily                    Ready     
+\                                              VSS-Task-Daily-C                  Ready     
+
+
+Enable Registry Backup........ 
+The operation completed successfully.
+----------------------------------------------------------------------------------------------------- 
+All-Custom Complete, Wed 03/12/2025, 16:20:27.46 
+----------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------- 
+Complete! Wed 03/12/2025, 16:20:27.58 
+----------------------------------------------------------------------------------------------------- 

@@ -5,7 +5,7 @@ $adobeInstallerUrl = "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat
 $installerPath = "$env:TEMP\AdbeRdrInstaller.exe"
 
 # Confirm Adobe Reader is installed by checking for the executable
-if (Test-Path "C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe") {
+if (Test-Path "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe") {
     Write-Output "Adobe Acrobat Reader already installed."
 } else {
 	# Download the Adobe Reader installer
@@ -18,7 +18,7 @@ if (Test-Path "C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.ex
 	Remove-Item $installerPath
 	
 	# Confirm Adobe Reader is installed by checking for the executable
-	if (Test-Path "C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe") {
+	if (Test-Path "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe") {
 		Write-Output "Adobe Acrobat Reader installed successfully."
 	} else {
 		Write-Output "Adobe Acrobat Reader installation failed."

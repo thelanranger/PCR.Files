@@ -22,10 +22,17 @@ echo ---------------------------------------------------------------------------
 echo Copy Installer........ >> C:\PCR\UpdateLog.txt
 xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install Basic Apps........ >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallChrome.ps1" >> C:\PCR\UpdateLog.txt
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallAdobe.ps1" >> C:\PCR\UpdateLog.txt
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallVLC.ps1" >> C:\PCR\UpdateLog.txt
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\Install7zip.ps1" >> C:\PCR\UpdateLog.txt
+
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+echo Install Basic Apps Complete........ >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 
 exit /b 0
