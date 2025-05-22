@@ -4,7 +4,7 @@ echo Begin All Custom, %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Copy Installer........ >> C:\PCR\UpdateLog.txt
 mkdir C:\PCR
-xcopy "%~dp0*.*" C:\PCR\ /e /i /y /exclude:%~dp0\exclude.txt
+xcopy "%~dp0*.*" C:\PCR\ /e /i /y /exclude:"%~dp0exclude.txt"
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
