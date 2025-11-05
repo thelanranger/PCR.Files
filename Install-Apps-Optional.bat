@@ -4,15 +4,14 @@ echo ---------------------------------------------------------------------------
 echo Begin Install, %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Copy Installer........ >> C:\PCR\UpdateLog.txt
-xcopy "%~dp0*.*" C:\PCR\ /e /i /y /exclude:"%~dp0exclude.txt"
+rem xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install Basic Apps........ >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallChrome.ps1" >> C:\PCR\UpdateLog.txt
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallAdobe.ps1" >> C:\PCR\UpdateLog.txt
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallVLC.ps1" >> C:\PCR\UpdateLog.txt
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\Install7zip.ps1" >> C:\PCR\UpdateLog.txt
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget show --id Microsoft.Office --source winget" >> C:\PCR\UpdateLog.txt
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id Microsoft.Office -h --accept-source-agreements --disable-interactivity --verbose --force --source winget"
+
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo End Install Basic Apps, %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
