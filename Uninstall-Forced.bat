@@ -1,5 +1,5 @@
 mkdir C:\PCR
-xcopy "%~dp0*.*" C:\PCR\ /e /i /y /exclude:%~dp0\exclude.txt
+xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "%~dp0UnInstall-ForcedExtensions.ps1"
-rem Powershell -ExecutionPolicy "bypass" -NoProfile -Command "%~dp0UnInstall-ForcedExtensions.ps1"
+echo UnInstall uBlock........ >> C:\PCR\UpdateLog.txt
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\UnInstall-ForcedExtensions.ps1"
