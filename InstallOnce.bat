@@ -6,8 +6,23 @@ echo ---------------------------------------------------------------------------
 echo Copy Installer........ >> C:\PCR\UpdateLog.txt
 xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 
-echo Install Basic Apps........ >> C:\PCR\UpdateLog.txt
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallChrome.ps1" >> C:\PCR\UpdateLog.txt
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallAdobe.ps1" >> C:\PCR\UpdateLog.txt
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\InstallVLC.ps1" >> C:\PCR\UpdateLog.txt
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command "C:\PCR\RemoteApps\Install7zip.ps1" >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+echo Execute Install-Apps-winget........ >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+call C:\PCR\Install-Apps-winget.bat
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+echo Execute Install-AllCustom........ >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+call C:\PCR\Install-AllCustom.bat
+call C:\PCR\DisableChromeNotifications.bat
+call C:\PCR\DisableEdgeNotifications.bat
+
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+echo Execute Optional........ >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+call C:\PCR\Install-DefaultEdgeProfile.bat
+call C:\PCR\Install-Apps-Optional.bat
+
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+echo Complete! %date%, %time% >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
