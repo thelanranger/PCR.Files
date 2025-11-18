@@ -24,5 +24,10 @@ call C:\PCR\Install-DefaultEdgeProfile.bat
 call C:\PCR\Install-Apps-Optional.bat
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+echo Disable Bitlocker Locally >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+manage-bde -off c: >> C:\PCR\UpdateLog.txt
+
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Complete! %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
