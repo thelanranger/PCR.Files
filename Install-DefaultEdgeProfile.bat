@@ -5,7 +5,7 @@ echo ---------------------------------------------------------------------------
 echo Copy Installer........ >> C:\PCR\UpdateLog.txt
 mkdir C:\PCR
 xcopy "%~dp0*.*" C:\PCR\ /e /i /y
-"C:\Program Files\7-Zip\7z.exe" x "%~dp0DefaultEdgeProfile.rar" -o"C:\PCR\" -y
+"C:\Program Files\7-Zip\7z.exe" x "%~dp0DefaultEdgeProfile.rar" -o"C:\PCR\DefaultEdgeProfile\" -y
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install DefaultEdgeProfile........ >> C:\PCR\UpdateLog.txt
