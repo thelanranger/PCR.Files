@@ -12,7 +12,7 @@ echo ---------------------------------------------------------------------------
 echo Begin Install, %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Copy Installer........ >> C:\PCR\UpdateLog.txt
-xcopy "%~dp0*.*" C:\PCR\ /e /i /y /exclude:"%~dp0exclude.txt"
+xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install Basic Apps ignoring security hash........ >> C:\PCR\UpdateLog.txt
