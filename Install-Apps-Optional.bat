@@ -18,9 +18,7 @@ echo Install Basic Apps........ >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget settings --enable InstallerHashOverride"
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget show --id Microsoft.Office --source winget" >> C:\PCR\UpdateLog.txt
-
-echo --- Install non-elevated do to issues, UAC Prompt may occur ---
-runas /trustlevel:0x20000 C:\PCR\Install-Office-IgnoreHash.bat
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id Microsoft.Office -h --accept-source-agreements --disable-interactivity --verbose --force --source winget"  >> C:\PCR\UpdateLog.txt
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo End Install Basic Apps, %date%, %time% >> C:\PCR\UpdateLog.txt
