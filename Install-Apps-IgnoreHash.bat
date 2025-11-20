@@ -1,11 +1,12 @@
 @echo off
-net session >nul 2>&1
-if %errorlevel% equ 0 (
+fsutil dirty query %systemdrive% >nul 2>&1
+if not %errorlevel% == 0 goto :notadmin
     echo This script should NOT be run as Administrator.
     echo Please run this as a regular user (double-click normally).
     pause
     exit /b 1
-)
+
+:notadmin
 if not exist "C:\PCR" mkdir "C:\PCR"
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Begin Install, %date%, %time% >> C:\PCR\UpdateLog.txt

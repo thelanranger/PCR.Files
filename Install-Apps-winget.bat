@@ -1,5 +1,5 @@
 @echo off
-net session >nul 2>&1
+fsutil dirty query %systemdrive% >nul 2>&1
 if %errorlevel% neq 0 (
     echo This script must be run as Administrator.
     echo Right-click the file and choose "Run as administrator".
@@ -12,7 +12,6 @@ echo Begin Install, %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Copy Installer........ >> C:\PCR\UpdateLog.txt
 xcopy "%~dp0*.*" C:\PCR\ /e /i /y
-rem /exclude:"%~dp0exclude.txt"
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install Basic Apps........ >> C:\PCR\UpdateLog.txt
