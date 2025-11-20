@@ -1,5 +1,12 @@
 @echo off
-mkdir C:\PCR 
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo This script must be run as Administrator.
+    echo Right-click the file and choose "Run as administrator".
+    pause
+    exit /b 1
+)
+if not exist "C:\PCR" mkdir "C:\PCR"
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Begin Install, %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt

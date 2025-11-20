@@ -6,12 +6,12 @@ if %errorlevel% neq 0 (
     pause
     exit /b 1
 )
-mkdir C:\PCR
+if not exist "C:\PCR" mkdir "C:\PCR"
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Begin Install, %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Copy Installer........ >> C:\PCR\UpdateLog.txt
-rem xcopy "%~dp0*.*" C:\PCR\ /e /i /y
+xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install Basic Apps........ >> C:\PCR\UpdateLog.txt
