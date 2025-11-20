@@ -20,11 +20,7 @@ Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget settings --enab
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget show --id Microsoft.Office --source winget" >> C:\PCR\UpdateLog.txt
 
 echo --- Install non-elevated do to issues, UAC Prompt may occur ---
-Powershell -Command "Start-Process powershell '-NoProfile -ExecutionPolicy Bypass -Command \"winget install -e --id Microsoft.Office --ignore-security-hash -h --accept-source-agreements --disable-interactivity --verbose --force --source winget"' -Verb RunAsUser"
-
-
-
-rem Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id Microsoft.Office -h --accept-source-agreements --disable-interactivity --verbose --force --source winget"
+runas /trustlevel:0x20000 C:\PCR\Install-Office-IgnoreHash.bat
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo End Install Basic Apps, %date%, %time% >> C:\PCR\UpdateLog.txt

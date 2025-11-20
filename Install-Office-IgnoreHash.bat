@@ -1,0 +1,1 @@
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id Microsoft.Office --ignore-security-hash -h --accept-source-agreements --disable-interactivity --verbose --force --source winget"
