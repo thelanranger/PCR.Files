@@ -14,6 +14,12 @@ echo Copy Installer........ >> C:\PCR\UpdateLog.txt
 xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+echo Install WinGet if not present........ >> C:\PCR\UpdateLog.txt
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
+Start-BitsTransfer -Source "https://aka.ms/getwinget" -Destination "$env:TEMP\winget.msixbundle"; Add-AppxPackage "$env:TEMP\winget.msixbundle" -ForceApplicationShutdown
+winget --version >> C:\PCR\UpdateLog.txt
+
+echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install Basic Apps........ >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget show --id Google.Chrome.EXE --source winget" >> C:\PCR\UpdateLog.txt
