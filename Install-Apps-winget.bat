@@ -19,8 +19,6 @@ echo ---------------------------------------------------------------------------
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
     "Invoke-WebRequest -Uri 'https://aka.ms/getwinget' -OutFile \"$env:TEMP\winget-latest.msixbundle\" -UseBasicParsing; ^
      Add-AppxPackage -Path \"$env:TEMP\winget-latest.msixbundle\" -ForceApplicationShutdown"
-
-Start-BitsTransfer -Source "https://aka.ms/getwinget" -Destination "$env:TEMP\winget.msixbundle"; Add-AppxPackage "$env:TEMP\winget.msixbundle" -ForceApplicationShutdown
 winget --version >> C:\PCR\UpdateLog.txt
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
