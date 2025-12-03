@@ -16,10 +16,10 @@ xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install WinGet if not present........ >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
-powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "Invoke-WebRequest -Uri 'https://aka.ms/getwinget' -OutFile \"$env:TEMP\winget-latest.msixbundle\" -UseBasicParsing; ^
-     Add-AppxPackage -Path \"$env:TEMP\winget-latest.msixbundle\" -ForceApplicationShutdown"
-winget --version >> C:\PCR\UpdateLog.txt
+rem ---Removed due to Cert issues!---
+rem Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget --version >> C:\PCR\UpdateLog.txt"
+
+rem Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget upgrade --all --silent --disabl-interactivity --verbose --force"
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install Basic Apps........ >> C:\PCR\UpdateLog.txt
@@ -36,6 +36,9 @@ Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id
 
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget show --id 7zip.7zip --source winget" >> C:\PCR\UpdateLog.txt
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id 7zip.7zip -h --accept-source-agreements --disable-interactivity --verbose --force --source winget"
+
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget show --id Zoom.Zoom --source winget" >> C:\PCR\UpdateLog.txt
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id Zoom.Zoom -h --accept-source-agreements --disable-interactivity --verbose --force --source winget"
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo End Install Basic Apps, %date%, %time% >> C:\PCR\UpdateLog.txt
