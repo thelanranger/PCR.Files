@@ -16,8 +16,10 @@ xcopy "%~dp0*.*" C:\PCR\ /e /i /y
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Install WinGet if not present........ >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
-rem ---Removed due to Cert issues!---
-rem Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget --version >> C:\PCR\UpdateLog.txt"
+rem PowerShell -ExecutionPolicy "bypass" -NoProfile -Command "Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle | Add-AppxPackage winget.msixbundle | del winget.msixbundle"
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "irm https://raw.githubusercontent.com/asheroto/winget-installer/master/winget-install.ps1 | iex | Out-Null"
+%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget --version >> C:\PCR\UpdateLog.txt"
 
 rem Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget upgrade --all --silent --disabl-interactivity --verbose --force"
 
