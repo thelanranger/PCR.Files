@@ -22,6 +22,7 @@ echo Execute Optional........ >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 call C:\PCR\Install-DefaultEdgeProfile.bat
 call C:\PCR\Install-Apps-Optional.bat
+call C:\PCR\Install-WindowsUpdates-Forced.bat
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Complete! %date%, %time% >> C:\PCR\UpdateLog.txt
