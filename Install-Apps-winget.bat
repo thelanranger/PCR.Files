@@ -42,6 +42,9 @@ Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget show --id Zoom.Zoom --source winget" >> C:\PCR\UpdateLog.txt
 Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id Zoom.Zoom -h --accept-source-agreements --disable-interactivity --verbose --force --source winget"
 
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget show --id Microsoft.WindowsNotepad.Legacy --source msstore" >> C:\PCR\UpdateLog.txt
+Powershell -ExecutionPolicy "bypass" -NoProfile -Command "winget install -e --id Microsoft.WindowsNotepad.Legacy -h --accept-source-agreements --disable-interactivity --verbose --force --source msstore"
+
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo End Install Basic Apps, %date%, %time% >> C:\PCR\UpdateLog.txt
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
