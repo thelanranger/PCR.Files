@@ -23,6 +23,7 @@ echo ---------------------------------------------------------------------------
 call C:\PCR\Install-AllCustom.bat
 call C:\PCR\DisableChromeNotifications.bat
 call C:\PCR\DisableEdgeNotifications.bat
+call C:\PCR\DisableEdgeBackground.bat
 
 echo ----------------------------------------------------------------------------------------------------- >> C:\PCR\UpdateLog.txt
 echo Execute Optional........ >> C:\PCR\UpdateLog.txt

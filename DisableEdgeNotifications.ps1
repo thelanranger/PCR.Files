@@ -1,5 +1,11 @@
 # Script to disable notifications for all Microsoft Edge profiles on a Windows computer
 
+#New Mechanism 05.06.2026-----------
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "DefaultNotificationsSetting" -Value 2
+
+#Legacy Mechanism 05.06.2026--------
+
 # Define the path to Edge's user data directory
 $edgeUserDataPath = "$env:LOCALAPPDATA\Microsoft\Edge\User Data"
 
