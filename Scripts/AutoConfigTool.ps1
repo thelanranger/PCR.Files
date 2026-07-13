@@ -1,4 +1,4 @@
-﻿# TaskRunner.ps1
+﻿# AutoConfigTool.ps1
 # Self-contained GUI Task Launcher with live system-state scanning.
 #
 # HOW TO ADD A TASK:
@@ -321,7 +321,7 @@ function Invoke-WingetAction {
     function Run-Winget-AsUser {
         param([string[]]$WingetArgs)
 
-        $taskName = "TaskRunner_Winget_$([System.IO.Path]::GetRandomFileName() -replace '\.','')"
+        $taskName = "AutoConfigTool_Winget_$([System.IO.Path]::GetRandomFileName() -replace '\.','')"
         $outFile  = "$env:TEMP\winget_asuser_$([System.IO.Path]::GetRandomFileName()).txt"
         $exitFile = "$outFile.exit"
         $cmdArgs  = $WingetArgs -join ' '
@@ -881,6 +881,13 @@ function Revert_disable_edge_notifications {
 # =============================================================================
 function Get-TaskList {
     return @(
+        # ── Browser Policies ──────────────────────────────────────────────────
+        [PSCustomObject]@{ id="ublock_all_browsers";        name="Force Install uBlock Origin";          description="Force-installs uBlock Origin in Chrome, Edge, Firefox, Opera, Brave"; group="Browser" },
+        [PSCustomObject]@{ id="disable_chrome_reporter";    name="Block Chrome Software Reporter";       description="Prevents Chrome's software_reporter_tool.exe from running"; group="Browser" },
+        [PSCustomObject]@{ id="disable_chrome_background";  name="Disable Chrome Background Mode";       description="Prevents Chrome from running in the background when closed"; group="Browser" },
+        [PSCustomObject]@{ id="disable_edge_background";    name="Disable Edge Background Mode";         description="Prevents Edge from running in the background when closed";  group="Browser" },
+        [PSCustomObject]@{ id="disable_chrome_notifications"; name="Disable Chrome Notifications";       description="Blocks Chrome from showing web push notifications";          group="Browser" },
+        [PSCustomObject]@{ id="disable_edge_notifications";   name="Disable Edge Notifications";         description="Blocks Edge from showing web push notifications";            group="Browser" },
         # ── Software ──────────────────────────────────────────────────────────
         [PSCustomObject]@{ id="install_chrome";        name="Install Google Chrome";                   description="Installs Google Chrome via winget";                          group="Software" },
         [PSCustomObject]@{ id="install_acrobat";       name="Install Adobe Acrobat Reader";            description="Installs Adobe Acrobat Reader (64-bit) via winget";          group="Software" },
@@ -905,14 +912,7 @@ function Get-TaskList {
         [PSCustomObject]@{ id="update_semi_annual";         name="Updates: Semi-Annual Channel";         description="Sets Windows Update to Semi-Annual Channel (Targeted)";    group="Privacy" },
         # ── System ────────────────────────────────────────────────────────────
         [PSCustomObject]@{ id="set_timezone_est";           name="Set Time Zone to Eastern (EST)";       description="Sets system time zone to Eastern Standard Time";            group="System" },
-        [PSCustomObject]@{ id="power_high_performance";     name="High Performance Power + No Hibernate"; description="High Perf plan, disk timeout=0, hibernation disabled";    group="System" },
-        # ── Browser Policies ──────────────────────────────────────────────────
-        [PSCustomObject]@{ id="disable_chrome_reporter";    name="Block Chrome Software Reporter";       description="Prevents Chrome's software_reporter_tool.exe from running"; group="Browser" },
-        [PSCustomObject]@{ id="ublock_all_browsers";        name="Force Install uBlock Origin";          description="Force-installs uBlock Origin in Chrome, Edge, Firefox, Opera, Brave"; group="Browser" },
-        [PSCustomObject]@{ id="disable_chrome_background";  name="Disable Chrome Background Mode";       description="Prevents Chrome from running in the background when closed"; group="Browser" },
-        [PSCustomObject]@{ id="disable_edge_background";    name="Disable Edge Background Mode";         description="Prevents Edge from running in the background when closed";  group="Browser" },
-        [PSCustomObject]@{ id="disable_chrome_notifications"; name="Disable Chrome Notifications";       description="Blocks Chrome from showing web push notifications";          group="Browser" },
-        [PSCustomObject]@{ id="disable_edge_notifications";   name="Disable Edge Notifications";         description="Blocks Edge from showing web push notifications";            group="Browser" }
+        [PSCustomObject]@{ id="power_high_performance";     name="High Performance Power + No Hibernate"; description="High Perf plan, disk timeout=0, hibernation disabled";    group="System" }
     )
 }
 
@@ -921,7 +921,7 @@ function Get-TaskList {
 # =============================================================================
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $StateFile = Join-Path $ScriptDir "task-state.json"
-$LogFile   = Join-Path $ScriptDir "taskrunner.log"
+$LogFile   = Join-Path $ScriptDir "autoconfigtool.log"
 
 function Write-Log {
     param([string]$Message, [string]$Level = "INFO")
@@ -1092,7 +1092,7 @@ $State = Load-State
 # MAIN FORM
 # =============================================================================
 $Form = New-Object System.Windows.Forms.Form
-$Form.Text            = "Task Runner"
+$Form.Text            = "Auto Config Tool"
 $Form.ClientSize      = New-Object System.Drawing.Size(960, 700)
 $Form.MinimumSize     = New-Object System.Drawing.Size(820, 560)
 $Form.BackColor       = $clrBg
@@ -1119,7 +1119,7 @@ $pnlHeader.BackColor = $clrPanel
 $root.Controls.Add($pnlHeader, 0, 0)
 
 $lblTitle = New-Object System.Windows.Forms.Label
-$lblTitle.Text      = "  Task Runner"
+$lblTitle.Text      = "  Auto Config Tool"
 $lblTitle.Font      = $fontTitle
 $lblTitle.ForeColor = $clrText
 $lblTitle.Dock      = "Fill"
@@ -1543,7 +1543,7 @@ $btnApply.Add_Click({
 # =============================================================================
 # LAUNCH
 # =============================================================================
-Write-Log "TaskRunner opened."
+Write-Log "AutoConfigTool opened."
 $Form.Add_Shown({
     $Form.Activate()
     $split.SplitterDistance = [int]($split.Width / 2)
