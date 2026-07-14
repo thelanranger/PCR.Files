@@ -1,4 +1,4 @@
-﻿# AutoConfigTool.ps1
+# AutoConfigTool.ps1
 # Self-contained GUI Task Launcher with live system-state scanning.
 #
 # HOW TO ADD A TASK:
@@ -874,6 +874,145 @@ function Revert_disable_edge_notifications {
     if ($ok) { return "success" } else { return "error" }
 }
 
+# ── Taskbar: Left Align ───────────────────────────────────────────────────────
+# TaskbarAl: 0=Left 1=Center -- desired: 0
+function Scan_taskbar_left_align {
+    $v = Get-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarAl"
+    if ($v -eq 0) { return "applied" } else { return "not-applied" }
+}
+function Apply_taskbar_left_align {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarAl" 0
+    Write-Host "Taskbar alignment set to Left."
+    if ($ok) { return "success" } else { return "error" }
+}
+function Revert_taskbar_left_align {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarAl" 1
+    Write-Host "Taskbar alignment restored to Center."
+    if ($ok) { return "success" } else { return "error" }
+}
+
+# ── Disable Task View Button ──────────────────────────────────────────────────
+# ShowTaskViewButton: 0=Hidden 1=Shown -- desired: 0
+function Scan_disable_task_view {
+    $v = Get-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowTaskViewButton"
+    if ($v -eq 0) { return "applied" } else { return "not-applied" }
+}
+function Apply_disable_task_view {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowTaskViewButton" 0
+    Write-Host "Task View button hidden from taskbar."
+    if ($ok) { return "success" } else { return "error" }
+}
+function Revert_disable_task_view {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowTaskViewButton" 1
+    Write-Host "Task View button restored to taskbar."
+    if ($ok) { return "success" } else { return "error" }
+}
+
+# ── Disable Widgets ───────────────────────────────────────────────────────────
+# TaskbarDa: 0=Hidden 1=Shown -- desired: 0
+function Scan_disable_widgets {
+    $v = Get-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarDa"
+    if ($v -eq 0) { return "applied" } else { return "not-applied" }
+}
+function Apply_disable_widgets {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarDa" 0
+    Write-Host "Widgets button hidden from taskbar."
+    if ($ok) { return "success" } else { return "error" }
+}
+function Revert_disable_widgets {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarDa" 1
+    Write-Host "Widgets button restored to taskbar."
+    if ($ok) { return "success" } else { return "error" }
+}
+
+# ── Disable Resume (Edge / Start pickup) ─────────────────────────────────────
+# ShowResumeButton: 0=Hidden 1=Shown -- desired: 0
+function Scan_disable_resume {
+    $v = Get-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarSd"
+    if ($v -eq 0) { return "applied" } else { return "not-applied" }
+}
+function Apply_disable_resume {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarSd" 0
+    Write-Host "Resume (Meet Now / Chat) button hidden from taskbar."
+    if ($ok) { return "success" } else { return "error" }
+}
+function Revert_disable_resume {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarSd" 1
+    Write-Host "Resume button restored to taskbar."
+    if ($ok) { return "success" } else { return "error" }
+}
+
+# ── Disable Show Recommended Files in Start ───────────────────────────────────
+# Start_TrackDocs: 0=Off 1=On -- desired: 0
+function Scan_disable_start_recommended {
+    $v = Get-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_TrackDocs"
+    if ($v -eq 0) { return "applied" } else { return "not-applied" }
+}
+function Apply_disable_start_recommended {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_TrackDocs" 0
+    Write-Host "Recommended files hidden from Start menu."
+    if ($ok) { return "success" } else { return "error" }
+}
+function Revert_disable_start_recommended {
+    $ok = Set-RegValue "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_TrackDocs" 1
+    Write-Host "Recommended files restored in Start menu."
+    if ($ok) { return "success" } else { return "error" }
+}
+
+# ── Disable Recommendations for Tips, Shortcuts, New Apps, and More ──────────
+# SubscribedContent-338388Enabled: 0=Off 1=On -- desired: 0
+function Scan_disable_start_tip_recs {
+    $v = Get-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338388Enabled"
+    if ($v -eq 0) { return "applied" } else { return "not-applied" }
+}
+function Apply_disable_start_tip_recs {
+    $ok = Set-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338388Enabled" 0
+    Write-Host "Start menu tip/shortcut/app recommendations disabled."
+    if ($ok) { return "success" } else { return "error" }
+}
+function Revert_disable_start_tip_recs {
+    $ok = Set-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338388Enabled" 1
+    Write-Host "Start menu tip/shortcut/app recommendations re-enabled."
+    if ($ok) { return "success" } else { return "error" }
+}
+
+# ── Disable Show Mobile Device in Start ───────────────────────────────────────
+# PhoneLink integration toggle: 0=Off 1=On -- desired: 0
+function Scan_disable_start_mobile {
+    $v = Get-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start_ShowClassicMode"
+    # PhoneLink / Mobile device card lives under a separate CDM key
+    $v2 = Get-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-353696Enabled"
+    if ($v2 -eq 0) { return "applied" } else { return "not-applied" }
+}
+function Apply_disable_start_mobile {
+    $ok = Set-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-353696Enabled" 0
+    Write-Host "Mobile device card hidden from Start menu."
+    if ($ok) { return "success" } else { return "error" }
+}
+function Revert_disable_start_mobile {
+    $ok = Set-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-353696Enabled" 1
+    Write-Host "Mobile device card restored in Start menu."
+    if ($ok) { return "success" } else { return "error" }
+}
+
+# ── Start Menu: List View / Turn off Categories (25H2+) ──────────────────────
+# Start_Layout: 0=Grid/Pinned 1=More Pins 2=More Recs (default)
+# On 25H2+ ShowAppListInStart: 0=Categories(default) 1=List -- desired: 1
+function Scan_start_list_view {
+    $v = Get-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Start" "ShowAppListInStart"
+    if ($v -eq 1) { return "applied" } else { return "not-applied" }
+}
+function Apply_start_list_view {
+    $ok = Set-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Start" "ShowAppListInStart" 1
+    Write-Host "Start menu switched to List view (categories disabled). Requires 25H2+."
+    if ($ok) { return "success" } else { return "error" }
+}
+function Revert_start_list_view {
+    $ok = Set-RegValue "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Start" "ShowAppListInStart" 0
+    Write-Host "Start menu restored to Categories view."
+    if ($ok) { return "success" } else { return "error" }
+}
+
 # =============================================================================
 # TASK LIST  --  order controls display order in UI
 # defaultEnabled only matters for tasks where scan always returns "not-applied"
@@ -897,10 +1036,14 @@ function Get-TaskList {
         [PSCustomObject]@{ id="install_notepad";       name="Install Legacy Notepad";                  description="Installs the classic Windows Notepad via winget";            group="Software" },
         [PSCustomObject]@{ id="install_office";        name="Install Microsoft Office";                description="Installs Microsoft Office via winget (off by default)";      group="Software"; noScan=$true },
         # ── Taskbar & Explorer ────────────────────────────────────────────────
+        [PSCustomObject]@{ id="taskbar_left_align";    name="Left Align Taskbar";                     description="Moves taskbar icons to the left (Windows 11 default is center)"; group="Taskbar" },
         [PSCustomObject]@{ id="search_box_icon";       name="Shrink Search Box to Icon";              description="Sets taskbar search to icon mode; hides Cortana button";     group="Taskbar" },
         [PSCustomObject]@{ id="taskbar_never_combine"; name="Never Combine Taskbar Buttons";          description="Shows separate buttons for each window on the taskbar";      group="Taskbar" },
         [PSCustomObject]@{ id="notif_show_all_icons";  name="Always Show All Tray Icons";             description="Disables auto-hide in the notification area";                group="Taskbar" },
         [PSCustomObject]@{ id="hide_people_button";    name="Hide People Button from Taskbar";        description="Removes the People button from the taskbar";                 group="Taskbar" },
+        [PSCustomObject]@{ id="disable_task_view";     name="Disable Task View Button";               description="Hides the Task View button from the taskbar";                group="Taskbar" },
+        [PSCustomObject]@{ id="disable_widgets";       name="Disable Widgets Button";                 description="Hides the Widgets (news & interests) button from the taskbar"; group="Taskbar" },
+        [PSCustomObject]@{ id="disable_resume";        name="Disable Resume Button";                  description="Hides the Resume/Chat taskbar button (TaskbarSd)";           group="Taskbar" },
         [PSCustomObject]@{ id="explorer_full_path";    name="Show Full Path in Title Bar";            description="Displays the full folder path in Explorer's title bar";      group="Explorer" },
         [PSCustomObject]@{ id="show_file_extensions";  name="Show File Extensions";                   description="Makes Explorer show extensions for all known file types";    group="Explorer" },
         [PSCustomObject]@{ id="explorer_ribbon";       name="Expand Explorer Ribbon";                 description="Keeps the Explorer ribbon expanded by default";              group="Explorer" },
@@ -908,6 +1051,10 @@ function Get-TaskList {
         # ── Privacy & Telemetry ───────────────────────────────────────────────
         [PSCustomObject]@{ id="disable_win_tips";           name="Disable Windows Tips & Suggestions";    description="Turns off Get tips, tricks and suggestions notifications"; group="Privacy" },
         [PSCustomObject]@{ id="disable_start_suggestions";  name="Disable Start Menu App Suggestions";   description="Removes suggested apps from the Start menu";               group="Privacy" },
+        [PSCustomObject]@{ id="disable_start_recommended";  name="Disable Recommended Files in Start";   description="Hides recently opened files from the Start menu Recommended section"; group="Privacy" },
+        [PSCustomObject]@{ id="disable_start_tip_recs";     name="Disable Start Tip/Shortcut/App Recs";  description="Turns off recommendations for tips, shortcuts, and new apps in Start"; group="Privacy" },
+        [PSCustomObject]@{ id="disable_start_mobile";       name="Disable Mobile Device in Start";       description="Hides the Phone Link / mobile device card from the Start menu"; group="Privacy" },
+        [PSCustomObject]@{ id="start_list_view";            name="Start Menu: List View (25H2+)";        description="Switches Start menu app list to List view, disabling category grouping (requires Windows 11 25H2 or later)"; group="Privacy" },
         [PSCustomObject]@{ id="disable_telemetry";          name="Disable Telemetry & DiagTrack";        description="Sets AllowTelemetry=0 and disables the DiagTrack service"; group="Privacy" },
         [PSCustomObject]@{ id="update_semi_annual";         name="Updates: Semi-Annual Channel";         description="Sets Windows Update to Semi-Annual Channel (Targeted)";    group="Privacy" },
         # ── System ────────────────────────────────────────────────────────────
@@ -1047,8 +1194,10 @@ $fontGroup  = New-Object System.Drawing.Font("Segoe UI", 7.5, [System.Drawing.Fo
 # =============================================================================
 # CARD UI HELPERS
 # =============================================================================
-$CardControls = @{}
-$ScanResults  = @{}
+$CardControls  = @{}
+$ScanResults   = @{}
+$GroupControls = @{}   # groupName -> @{ Header=panel; Checkbox=cb; Arrow=lbl; Cards=list; Collapsed=bool }
+$TaskGroup     = @{}   # taskId   -> groupName
 
 function Get-ScanColor([string]$r) {
     switch ($r) {
@@ -1080,6 +1229,55 @@ function Update-CardUI {
     }
     if ($ScanResult -eq "applied")     { $cc.Checkbox.Checked = $true  }
     if ($ScanResult -eq "not-applied") { $cc.Checkbox.Checked = $false }
+    # Propagate to the group checkbox (Sync-GroupCheckboxFromItems defined below)
+    if ($cc.Group) { Sync-GroupCheckboxFromItems -GroupName $cc.Group }
+}
+
+# Repositions every header and card after a collapse/expand
+function Refresh-CardPositions {
+    $y = 4
+    $orderedGroups = $Tasks | Where-Object { $_.PSObject.Properties["group"] -and $_.group } |
+                     ForEach-Object { $_.group } | Select-Object -Unique
+    foreach ($gn in $orderedGroups) {
+        $gc = $GroupControls[$gn]
+        if (-not $gc) { continue }
+        $gc.Header.Location = New-Object System.Drawing.Point(2, $y)
+        $y += $gc.Header.Height + 2
+        if (-not $gc.Collapsed) {
+            foreach ($c in $gc.Cards) {
+                $c.Location = New-Object System.Drawing.Point(2, $y)
+                $c.Visible  = $true
+                $y += $c.Height + 6
+            }
+        } else {
+            foreach ($c in $gc.Cards) { $c.Visible = $false }
+        }
+    }
+    $pnlScroll.AutoScrollMinSize = New-Object System.Drawing.Size(0, $y)
+}
+
+# Refreshes a group checkbox from the current checked state of its item checkboxes.
+function Sync-GroupCheckboxFromItems {
+    param([string]$GroupName)
+    $gc = $GroupControls[$GroupName]
+    if (-not $gc) { return }
+    $taskIds = $Tasks | Where-Object { $_.PSObject.Properties["group"] -and $_.group -eq $GroupName } |
+               ForEach-Object { $_.id }
+    $checkedCount = 0
+    $total = 0
+    foreach ($tid in $taskIds) {
+        if ($CheckBoxes[$tid]) {
+            $total++
+            if ($CheckBoxes[$tid].Checked) { $checkedCount++ }
+        }
+    }
+    $gcb = $gc.Checkbox
+    $savedTag = $gcb.Tag   # preserve group name (or whatever was there)
+    $gcb.Tag = "syncing"
+    if     ($checkedCount -eq 0)      { $gcb.CheckState = [System.Windows.Forms.CheckState]::Unchecked     }
+    elseif ($checkedCount -eq $total) { $gcb.CheckState = [System.Windows.Forms.CheckState]::Checked       }
+    else                              { $gcb.CheckState = [System.Windows.Forms.CheckState]::Indeterminate }
+    $gcb.Tag = $savedTag   # restore (keeps group name intact for CheckedChanged handler)
 }
 
 # =============================================================================
@@ -1295,27 +1493,119 @@ $btnOpenLog.Location  = New-Object System.Drawing.Point(334, 7)
 $pnlButtons.Controls.Add($btnOpenLog)
 
 # =============================================================================
-# BUILD TASK CARDS  (with group headers)
+# BUILD TASK CARDS  (with collapsible group headers + group checkboxes)
 # =============================================================================
 $CheckBoxes   = @{}
 $cardY        = 4
 $currentGroup = ""
 
 foreach ($task in $Tasks) {
-    # ── Group header label ────────────────────────────────────────────────────
+    # ── Group header (collapsible) ────────────────────────────────────────────
     $grp = if ($task.PSObject.Properties["group"]) { $task.group } else { "" }
     if ($grp -and $grp -ne $currentGroup) {
         $currentGroup = $grp
-        $lblGrp = New-Object System.Windows.Forms.Label
-        $lblGrp.Text      = $grp.ToUpper()
-        $lblGrp.Font      = $fontGroup
-        $lblGrp.ForeColor = $clrAccent
-        $lblGrp.BackColor = $clrBg
-        $lblGrp.Size      = New-Object System.Drawing.Size(($pnlScroll.ClientSize.Width - 8), 20)
-        $lblGrp.Location  = New-Object System.Drawing.Point(6, ($cardY + 4))
-        $lblGrp.Anchor    = [System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right
-        $pnlScroll.Controls.Add($lblGrp)
-        $cardY += 26
+
+        # Register the group entry FIRST so item-cb handlers can reference it
+        $GroupControls[$grp] = @{
+            Header    = $null   # filled in below
+            Checkbox  = $null
+            Arrow     = $null
+            Cards     = [System.Collections.Generic.List[System.Windows.Forms.Panel]]::new()
+            Collapsed = $false
+        }
+
+        # Outer header panel
+        $pnlGrpHdr = New-Object System.Windows.Forms.Panel
+        $pnlGrpHdr.BackColor = $clrGroup
+        $pnlGrpHdr.Size      = New-Object System.Drawing.Size(($pnlScroll.ClientSize.Width - 8), 28)
+        $pnlGrpHdr.Location  = New-Object System.Drawing.Point(2, $cardY)
+        $pnlGrpHdr.Anchor    = [System.Windows.Forms.AnchorStyles]::Top -bor
+                               [System.Windows.Forms.AnchorStyles]::Left -bor
+                               [System.Windows.Forms.AnchorStyles]::Right
+        $pnlGrpHdr.Cursor    = "Hand"
+        $GroupControls[$grp].Header = $pnlGrpHdr
+
+        # Collapse arrow  (ASCII - no encoding issues)
+        $lblArrow = New-Object System.Windows.Forms.Label
+        $lblArrow.Text      = "[-]"
+        $lblArrow.Font      = $fontGroup
+        $lblArrow.ForeColor = $clrAccent
+        $lblArrow.BackColor = [System.Drawing.Color]::Transparent
+        $lblArrow.Size      = New-Object System.Drawing.Size(28, 28)
+        $lblArrow.Location  = New-Object System.Drawing.Point(4, 0)
+        $lblArrow.TextAlign = "MiddleCenter"
+        $pnlGrpHdr.Controls.Add($lblArrow)
+        $GroupControls[$grp].Arrow = $lblArrow
+
+        # Group checkbox (three-state: all / mixed / none)
+        $gcb = New-Object System.Windows.Forms.CheckBox
+        $gcb.ThreeState  = $true
+        $gcb.CheckState  = [System.Windows.Forms.CheckState]::Indeterminate
+        $gcb.Size        = New-Object System.Drawing.Size(18, 18)
+        $gcb.Location    = New-Object System.Drawing.Point(36, 5)
+        $gcb.BackColor   = [System.Drawing.Color]::Transparent
+        $gcb.Cursor      = "Hand"
+        $pnlGrpHdr.Controls.Add($gcb)
+        $GroupControls[$grp].Checkbox = $gcb
+
+        # Group name label
+        $lblGrpName = New-Object System.Windows.Forms.Label
+        $lblGrpName.Text      = $grp.ToUpper()
+        $lblGrpName.Font      = $fontGroup
+        $lblGrpName.ForeColor = $clrAccent
+        $lblGrpName.BackColor = [System.Drawing.Color]::Transparent
+        $lblGrpName.Location  = New-Object System.Drawing.Point(58, 0)
+        $lblGrpName.Size      = New-Object System.Drawing.Size(300, 28)
+        $lblGrpName.TextAlign = "MiddleLeft"
+        $pnlGrpHdr.Controls.Add($lblGrpName)
+
+        $pnlScroll.Controls.Add($pnlGrpHdr)
+        $cardY += 30
+
+        # ── Wire group checkbox: Tag holds group name; shared handler reads it ─
+        $gcb.Tag = $grp
+        $gcb.Add_CheckedChanged({
+            param($s, $e)
+            if ($s.Tag -eq "syncing") { return }
+            $myGroup     = $s.Tag
+            $wantChecked = ($s.CheckState -ne [System.Windows.Forms.CheckState]::Unchecked)
+            foreach ($tid in ($Tasks | Where-Object {
+                    $_.PSObject.Properties["group"] -and $_.group -eq $myGroup } |
+                    ForEach-Object { $_.id })) {
+                if ($CheckBoxes[$tid]) { $CheckBoxes[$tid].Checked = $wantChecked }
+            }
+            # Force binary state after a direct header click (skip indeterminate)
+            $s.Tag = "syncing"
+            $s.CheckState = if ($wantChecked) {
+                [System.Windows.Forms.CheckState]::Checked
+            } else {
+                [System.Windows.Forms.CheckState]::Unchecked
+            }
+            $s.Tag = $myGroup   # restore Tag to group name
+        })
+
+        # ── Wire collapse toggle; Tag on the panel holds group name ───────────
+        $pnlGrpHdr.Tag = $grp
+        $toggleCollapse = {
+            param($s, $e)
+            # Walk up to the panel that has the group Tag
+            $src = $s
+            while ($src -and -not ($src -is [System.Windows.Forms.Panel] -and
+                                   $src.Tag -and $src.Tag -is [string] -and
+                                   $GroupControls[$src.Tag])) {
+                $src = $src.Parent
+            }
+            if (-not $src) { return }
+            $myGroup = $src.Tag
+            $gc = $GroupControls[$myGroup]
+            $gc.Collapsed = -not $gc.Collapsed
+            $gc.Arrow.Text = if ($gc.Collapsed) { "[+]" } else { "[-]" }
+            Refresh-CardPositions
+            $pnlScroll.Refresh()
+        }
+        $pnlGrpHdr.Add_Click($toggleCollapse)
+        $lblArrow.Add_Click($toggleCollapse)
+        $lblGrpName.Add_Click($toggleCollapse)
     }
 
     $prop        = $State.PSObject.Properties[$task.id]
@@ -1342,6 +1632,17 @@ foreach ($task in $Tasks) {
     $cb.Checked   = $false
     $card.Controls.Add($cb)
     $CheckBoxes[$task.id] = $cb
+
+    # ── Item checkbox change -> refresh the group checkbox via Tag ────────────
+    if ($grp) {
+        $cb.Tag = $grp
+        $cb.Add_CheckedChanged({
+            param($s, $e)
+            if ($s.Tag -and $s.Tag -is [string] -and $GroupControls[$s.Tag]) {
+                Sync-GroupCheckboxFromItems -GroupName $s.Tag
+            }
+        })
+    }
 
     $lblName = New-Object System.Windows.Forms.Label
     $lblName.Text      = $task.name
@@ -1382,6 +1683,7 @@ foreach ($task in $Tasks) {
         Checkbox    = $cb
         LastChanged = $lblLast
         NoScan      = $noScan
+        Group       = $grp
     }
 
     $cardClick = {
@@ -1396,6 +1698,7 @@ foreach ($task in $Tasks) {
         if ($ctrl -isnot [System.Windows.Forms.CheckBox]) { $ctrl.Add_Click($cardClick) }
     }
 
+    if ($grp -and $GroupControls[$grp]) { $GroupControls[$grp].Cards.Add($card) }
     $pnlScroll.Controls.Add($card)
     $cardY += 84
 }
@@ -1437,6 +1740,9 @@ function Invoke-ScanAll {
         [System.Windows.Forms.Application]::DoEvents()
     }
 
+    # Sync group checkboxes from item checkbox states (already set by Update-CardUI above)
+    foreach ($gn in $GroupControls.Keys) { Sync-GroupCheckboxFromItems -GroupName $gn }
+
     Save-State $State
     return [PSCustomObject]@{ Applied = $applied; Pending = $pending; Errors = $errors }
 }
@@ -1444,8 +1750,22 @@ function Invoke-ScanAll {
 # =============================================================================
 # BUTTON EVENTS
 # =============================================================================
-$btnSelectAll.Add_Click({ foreach ($cb in $CheckBoxes.Values) { $cb.Checked = $true  } })
-$btnSelectNone.Add_Click({ foreach ($cb in $CheckBoxes.Values) { $cb.Checked = $false } })
+$btnSelectAll.Add_Click({
+    foreach ($cb in $CheckBoxes.Values) { $cb.Checked = $true }
+    foreach ($gn in $GroupControls.Keys) {
+        $gc = $GroupControls[$gn]; $gc.Checkbox.Tag = "updating"
+        $gc.Checkbox.CheckState = [System.Windows.Forms.CheckState]::Checked
+        $gc.Checkbox.Tag = $null
+    }
+})
+$btnSelectNone.Add_Click({
+    foreach ($cb in $CheckBoxes.Values) { $cb.Checked = $false }
+    foreach ($gn in $GroupControls.Keys) {
+        $gc = $GroupControls[$gn]; $gc.Checkbox.Tag = "updating"
+        $gc.Checkbox.CheckState = [System.Windows.Forms.CheckState]::Unchecked
+        $gc.Checkbox.Tag = $null
+    }
+})
 $btnClear.Add_Click({ $txtOutput.Clear() })
 $btnOpenLog.Add_Click({
     if (Test-Path $LogFile) { Start-Process notepad.exe $LogFile }

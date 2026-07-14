@@ -1,2 +1,2 @@
 echo Starting up....
-Powershell -ExecutionPolicy "bypass" -NoProfile -Command ".\AutoConfigTool.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \"%~dp0AutoConfigTool.ps1\"'"
